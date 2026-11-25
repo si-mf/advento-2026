@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jornada até o Natal</title>
+<style>
+:root{--night:#14305A;--gold:#F7B538;--cream:#FBE3DC;--ink:#2a1a22;--mute:#7a5c68;--line:#e9b8c2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2b1030;color:var(--ink);font-family:Helvetica,Arial,sans-serif;font-size:15px}
+body{max-width:640px;margin:0 auto;min-height:100vh;background:#3d1738}
+.serif{font-family:Georgia,'Times New Roman',serif}
+header{background:linear-gradient(#14305A,#2c2a63);color:#fff;padding:20px 16px 14px;text-align:center;border-bottom:4px solid var(--gold)}
+header .st{color:var(--gold);font-size:22px}
+h1{margin:2px 0 0;font-size:30px;font-weight:700}
+.sub{font-size:12px;color:#c9d6ee;margin-top:4px}
+.me{display:flex;align-items:center;gap:10px;margin-top:14px;background:rgba(255,255,255,.1);border-radius:30px;padding:6px 14px 6px 6px;text-align:left;cursor:pointer}
+.me b{display:block}.me small{color:#c9d6ee}
+.av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex:none;border:2px solid #fff}
+.pb{height:8px;background:rgba(255,255,255,.2);border-radius:4px;overflow:hidden;flex:1;margin-top:6px}
+.pb i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+.tabs{display:flex;position:sticky;top:0;z-index:3;background:#3d1738}
+.tabs button{flex:1;border:0;background:none;color:#e9c7da;padding:13px;font:inherit;font-weight:700;border-bottom:3px solid transparent}
+.tabs button.on{color:#fff;border-color:var(--gold)}
+main{padding:12px}
+.wk{border-radius:10px;overflow:hidden;margin-bottom:16px;background:var(--cream)}
+.wh{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;color:#fff}
+.wh h2{margin:0;font-size:22px}
+.wh span{background:var(--tag);padding:4px 12px;border-radius:4px;font-weight:700;font-size:13px}
+.day{display:grid;grid-template-columns:1fr 34px;gap:10px;padding:12px 14px;border-top:2px solid var(--tag)}
+.day.today{background:#fff3cc}
+.day.done .q{opacity:.55}
+.day.lock{opacity:.6}
+.lkt{font-size:12px;color:var(--mute);margin-top:4px;font-weight:700}
+.dh{font-size:12px;font-weight:700;text-transform:uppercase}
+.dh a{color:var(--ink)}
+.q{margin-top:4px;line-height:1.4}
+.day input{width:32px;height:32px;accent-color:#c2185b;margin:0}
+.card{display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.card.you{outline:3px solid var(--gold)}
+.card .in{flex:1;min-width:0}
+.card .nm{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{height:9px;background:#fff;border-radius:5px;overflow:hidden;margin:5px 0 4px}
+.bar i{display:block;height:100%}
+.fl{font-size:12px;color:var(--mute)}
+.fl s{text-decoration:none;opacity:.25;filter:grayscale(1)}
+.note{background:#fff3cc;border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:13px}
+.ob{padding:22px 16px;color:#fff}
+.ob h2{text-align:center;margin:0 0 4px;font-size:26px}
+.ob p{text-align:center;color:#e9c7da;margin:0 0 16px}
+.ob label{display:block;font-weight:700;margin:14px 0 6px}
+.ob input[type=text]{width:100%;font:inherit;font-size:17px;padding:12px;border-radius:8px;border:0}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.grid button{aspect-ratio:1;border-radius:50%;border:3px solid transparent;font-size:22px;padding:0;background:#fff}
+.grid button.on{border-color:var(--gold);transform:scale(1.1)}
+.prev{display:flex;justify-content:center;margin:16px 0}
+.prev .av{width:84px;height:84px;font-size:46px}
+.go{width:100%;font:inherit;font-weight:700;font-size:17px;padding:14px;border:0;border-radius:8px;background:var(--gold);color:#2a1a22}
+.go:disabled{opacity:.4}
+.vs{text-align:center;color:#e9c7da;font-size:12px;margin:8px 0 24px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const D=`Isaías 8:17|ISA.8.17|Ao olhar para sua vida ou seu contexto, onde parece que Deus escondeu o rosto? Como ter esperança nesses momentos?
+Salmos 39:7|PSA.39.7|O que você espera ou deseja nesta estação do Advento? Pense em apresentar essas coisas a Deus.
+Salmos 130:7|PSA.130.7|De que maneiras você já experimentou o amor constante e fiel de Deus? Como isso fortalece sua esperança no futuro?
+Isaías 40:31|ISA.40.31|Pense nas situações mais cansativas da sua vida agora. Como esperar em Deus e confiar nele para receber força e direção?
+1 Pedro 1:3|1PE.1.3|Como a ressurreição de Jesus dentre os mortos molda sua esperança para o futuro e para a sua vida hoje?
+Romanos 8:20-21|ROM.8.20-21|Como será a vida no mundo de Deus, plenamente livre e restaurado? Qual será a melhor parte desse mundo?
+Romanos 8:24-25|ROM.8.24-25|O que significa, na prática, esperar em Deus de forma ativa e paciente neste momento da sua vida?
+Isaías 26:3|ISA.26.3|Que situações conflituosas você está enfrentando agora? Onde você tem dificuldade de encontrar paz interior? Entregue essas situações a Deus.
+Isaías 9:6-7|ISA.9.6-7|Considerando seus relacionamentos e a situação do mundo, como a promessa de Deus de trazer paz infinita faz você se sentir?
+Zacarias 9:9-10|ZEC.9.9-10|Como o rei prometido por Deus difere dos governantes deste mundo, que usam dominação e violência para promover a “paz”?
+João 16:33|JHN.16.33|O que você acha que Jesus quer dizer com “venci o mundo”? Como isso pode trazer paz em tempos difíceis?
+Colossenses 1:19-20|COL.1.19-20|Deus reconcilia tudo consigo, inclusive você. Como pensar sobre isso te traz paz?
+Efésios 2:14-15|EPH.2.14-15|Quais áreas do seu contexto estão precisando de pacificadores? Como você pode levar a paz de Jesus a essas situações?
+Efésios 4:3|EPH.4.3|Como podemos, hoje, “preservar a unidade do Espírito” enquanto agentes da paz de Deus?
+Salmos 105:43|PSA.105.43|Os antigos israelitas experimentaram uma alegria indescritível quando Deus os libertou da escravidão no Egito. Quando você experimentou momentos assim?
+Isaías 51:3|ISA.51.3|Como seria se todos os lugares destruídos e abandonados da sua comunidade fossem restaurados e renovados, como um jardim exuberante?
+Lucas 2:10-11|LUK.2.10-11|Imagine que seu povo sofreu durante séculos, dominado por uma potência estrangeira, e um anjo aparecesse anunciando que, finalmente, o rei tão esperado chegou?
+João 15:10-11|JHN.15.10-11|Qual é a diferença entre dar ordens para controlar as pessoas e dar ordens para abençoá-las e enchê-las de alegria? Como os mandamentos de Jesus trazem alegria?
+Mateus 5:11-12|MAT.5.11-12|Como você reage ao ser insultado ou perseguido? Por que Jesus nos diz para nos alegrarmos quando nos maltratarem por causa dele?
+2 Coríntios 6:10|2CO.6.10|Quando enfrentamos circunstâncias difíceis, como podemos manter a alegria e o sofrimento juntos?
+Romanos 15:13|ROM.15.13|Quando Deus nos enche de esperança, ela transborda para outras pessoas. Que palavras ou atitudes você poderia oferecer para levar esperança?
+Marcos 12:29-30|MRK.12.29-30|O que significa amar a Deus com tudo o que temos, incluindo força, afeições, intelecto e todo o nosso ser?
+João 13:34-35|JHN.13.34-35|Como seria amar os outros da mesma maneira que Jesus ama você?
+Lucas 6:35|LUK.6.35|Como você se sente ao ler histórias sobre Deus demonstrando bondade para com pessoas que parecem não merecê-la?
+1 João 4:8-9|1JN.4.8-9|O que você acha que significa quando a Bíblia diz que Deus não apenas age com amor, mas é amor?
+1 João 4:10-12|1JN.4.10-12|Como amar os outros torna completo o amor de Deus? Como você já experimentou essa realidade?
+João 3:16-17|JHN.3.16-17|O Natal celebra o amor de Deus pelo mundo. Neste Natal, de que maneira você pode relembrar e se entregar ao amor que Deus tem por você?`.split('\n').map(l=>l.split('|'));
+const N=D.length,W=[['Esperança','#6B1F3D','#E8509B',0,7],['Paz','#9A2A6E','#1F7A5E',7,14],['Alegria','#7A5CA8','#1F4E9A',14,21],['Amor','#8E4F9E','#E0526A',21,27]];
+const EM=['😀','😎','🤓','🥳','😇','🦊','🐻','🦁','🐼','🐯','🦄','🐬','🌟','🔥','🎸','⚽'],CO=['#E8509B','#1F7A5E','#1F4E9A','#E0526A','#F7B538','#7A5CA8','#2BB5AE','#F28C38'];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const okC=c=>/^#[0-9A-Fa-f]{6}$/.test(c)?c:'#E8509B',okE=e=>EM.includes(e)?e:'🙂';
+/* ===== CONFIGURAÇÃO (o líder edita aqui) ===== */
+const API='https://script.google.com/macros/s/AKfycbwZOfUc-6902_srl4Tk30P2Tb1TQn_HOcJ43O0sTSmqosoOx0YiOKWisCkzqz8UurcQ/exec'; // termina em /exec
+const TESTE='2026-12-25'; // para testar: '2026-12-25' libera os dias até essa data (só no seu aparelho)
+/* ================================================ */
+const LK='advento2026';let S={name:'',emoji:EM[0],color:CO[0],done:[],pid:'',sec:''};
+try{const l=JSON.parse(localStorage.getItem(LK)||'null');if(l&&l.name)S=l}catch(e){}
+const rnd=n=>[...crypto.getRandomValues(new Uint8Array(n))].map(b=>'abcdefghjkmnpqrstuvwxyz23456789'[b%31]).join('');
+if(!S.pid){S.pid=rnd(8);S.sec=rnd(24)}
+const ON=API.startsWith('https://');
+let tab='me',edit=false,people=[],mode=ON?'online':'local',tmp={},last=null;
+const app=document.getElementById('app');
+const dt=i=>new Date(2026,10,29+i);
+const fd=i=>dt(i).toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+const nw=TESTE?new Date(TESTE+'T12:00:00'):new Date(),todayI=Math.round((new Date(nw.getFullYear(),nw.getMonth(),nw.getDate())-dt(0))/864e5);
+const av=(e,c)=>'<div class="av" style="background:'+okC(c)+'">'+okE(e)+'</div>';
+let tmr;
+function push(){if(!ON||!S.name)return;clearTimeout(tmr);tmr=setTimeout(async()=>{try{await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({pid:S.pid,sec:S.sec,nome:S.name,emoji:S.emoji,cor:S.color,dias:S.done})})}catch(e){mode='err'}pull()},800)}
+async function pull(){if(!ON)return;try{const r=await fetch(API+'?t='+Date.now());const j=await r.json();people=Array.isArray(j.people)?j.people:[];last=new Date();mode='online'}catch(e){mode='err'}if(!edit)render()}
+function persist(){try{localStorage.setItem(LK,JSON.stringify(S))}catch(e){}push()}
+function render(){
+ if(!S.name||edit){const t=edit?tmp:S;tmp=Object.assign({},t);return onboard()}
+ const n=S.done.length;
+ let h='<header><div class="st">✦</div><h1 class="serif">Jornada até o Natal</h1><div class="sub">Advento 2026 · 29 de novembro a 25 de dezembro</div><div class="me" id="ed">'+av(S.emoji,S.color)+'<div style="flex:1"><b>'+esc(S.name)+'</b><small>'+n+' de '+N+' dias · toque para editar</small><div class="pb"><i style="width:'+n/N*100+'%"></i></div></div></div></header>';
+ h+='<div class="tabs"><button data-t="me" class="'+(tab==='me'?'on':'')+'">Meu checklist</button><button data-t="all" class="'+(tab==='all'?'on':'')+'">Turma</button></div><main>';
+ h+=tab==='me'?mine():group();
+ h+='</main><div class="vs">Lâmpada para os meus pés é a tua palavra. — Salmos 119:105<br>Baseado no calendário “Jornada até o Natal”, BibleProject</div>';
+ app.innerHTML=h;
+ document.getElementById('ed').onclick=()=>{edit=true;tmp=Object.assign({},S);render()};
+ {const rf=document.getElementById('rf');if(rf)rf.onclick=pull}app.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{tab=b.dataset.t;render();scrollTo(0,0)});
+ app.querySelectorAll('.day input').forEach(c=>c.onchange=()=>{const i=+c.dataset.i,s=new Set(S.done);c.checked?s.add(i):s.delete(i);S.done=[...s].sort((a,b)=>a-b);persist();render()});
+}
+function mine(){let h='';W.forEach(w=>{h+='<section class="wk" style="--tag:'+w[2]+'"><div class="wh" style="background:'+w[1]+'"><h2 class="serif">'+w[0]+'</h2><span>Semana '+(W.indexOf(w)+1)+'</span></div>';
+ for(let i=w[3];i<w[4];i++){const d=D[i],ok=S.done.includes(i),lk=i>todayI;
+  h+='<label class="day'+(ok?' done':'')+(i===todayI?' today':'')+(lk?' lock':'')+'"><div><div class="dh">Dia '+(i+1)+', '+fd(i)+' | <a target="_blank" rel="noopener" href="https://www.bible.com/bible/129/'+d[1]+'.NVI">'+d[0]+'</a></div><div class="q">'+d[2]+'</div>'+(lk?'<div class="lkt">Libera em '+dt(i).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+'</div>':'')+'</div>'+(lk?'<span style="font-size:22px">🔒</span>':'<input type="checkbox" data-i="'+i+'"'+(ok?' checked':'')+'>')+'</label>'}
+ h+='</section>'});return h}
+function group(){
+ let h='';
+ if(mode==='local')h+='<div class="note">A turma ainda não está conectada. Peça ao líder o link atualizado. Seu progresso fica salvo neste aparelho.</div>';
+ if(mode==='err')h+='<div class="note">Não foi possível falar com a planilha agora. Seu progresso fica salvo neste aparelho e será enviado na próxima atualização.</div>';
+ if(ON)h+='<div class="fl" style="color:#e9c7da;margin-bottom:10px">'+(last?'Atualizado às '+last.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+' · ':'')+'atualiza sozinho a cada 30 minutos <button id="rf" style="margin-left:6px">Atualizar agora</button></div>';
+ const all=people.map(p=>({id:String(p.pid),name:p.nome,emoji:p.emoji,color:p.cor,done:Array.isArray(p.dias)?p.dias:[]}));
+ if(!all.some(p=>p.id===S.pid))all.push({id:S.pid,name:S.name,emoji:S.emoji,color:S.color,done:S.done});
+ all.sort((a,b)=>b.done.length-a.done.length||String(a.name).localeCompare(String(b.name)));
+ all.forEach(p=>{const you=p.id===S.pid,dn=you?S.done:p.done,c=okC(you?S.color:p.color);
+  const fl=W.map(w=>{let ok=true;for(let i=w[3];i<w[4];i++)if(!dn.includes(i))ok=false;return ok?'🕯️':'<s>🕯️</s>'}).join(' ');
+  h+='<div class="card'+(you?' you':'')+'">'+av(you?S.emoji:p.emoji,c)+'<div class="in"><div class="nm">'+esc(you?S.name:p.name)+(you?' (você)':'')+'</div><div class="bar"><i style="width:'+dn.length/N*100+'%;background:'+c+'"></i></div><div class="fl">'+dn.length+' de '+N+' dias · '+fl+'</div></div></div>'});
+ return h}
+function onboard(){
+ const ok=tmp.name&&tmp.name.trim().length>0;
+ app.innerHTML='<div class="ob"><div style="text-align:center;color:var(--gold);font-size:24px">✦</div><h2 class="serif">Jornada até o Natal</h2><p>Crie seu avatar para começar a jornada com a turma.</p><div class="prev" id="pv"></div><label>Seu nome</label><input type="text" id="nm" maxlength="20" placeholder="Como quer ser chamado?" value="'+esc(tmp.name||'')+'"><label>Escolha seu avatar</label><div class="grid" id="ge"></div><label>Escolha sua cor</label><div class="grid" id="gc"></div><br><button class="go" id="ok"'+(ok?'':' disabled')+'>'+(edit&&S.name?'Salvar':'Começar a jornada')+'</button>'+(edit&&S.name?'<br><br><button class="go" id="cx" style="background:#fff">Cancelar</button>':'')+'</div>';
+ const pv=()=>document.getElementById('pv').innerHTML=av(tmp.emoji,tmp.color);pv();
+ const gr=(id,arr,key,f)=>{const g=document.getElementById(id);g.innerHTML=arr.map(v=>'<button data-v="'+v+'" class="'+(tmp[key]===v?'on':'')+'" style="'+(key==='color'?'background:'+v:'')+'">'+(key==='emoji'?v:'')+'</button>').join('');
+  g.querySelectorAll('button').forEach(b=>b.onclick=()=>{tmp[key]=b.dataset.v;gr(id,arr,key);pv()})};
+ gr('ge',EM,'emoji');gr('gc',CO,'color');
+ const nm=document.getElementById('nm'),bt=document.getElementById('ok');
+ nm.oninput=()=>{tmp.name=nm.value;bt.disabled=!nm.value.trim()};
+ bt.onclick=()=>{S.name=tmp.name.trim().slice(0,20);S.emoji=okE(tmp.emoji);S.color=okC(tmp.color);edit=false;persist();render()};
+ const cx=document.getElementById('cx');if(cx)cx.onclick=()=>{edit=false;render()};
+}
+render();
+if(S.name)push();else pull();
+setInterval(pull,30*60*1000);
+</script>
+</body>
+</html>
